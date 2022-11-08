@@ -48,12 +48,35 @@ int scanLineAsInt() {
 	return buf;
 }
 
+typedef struct{char* annee; char* nom; char* sujet;} Winner;
+
+Winner *readWinners(nbGagnants)
+{
+	Winner *tab;
+	tab = malloc(nbGagnants*sizeof(Winner));
+	for(int i=0;i < nbGagnants; i++){
+		tab[i].annee = scanLine();
+		tab[i].nom = scanLine();
+		tab[i].sujet = scanLine();
+	}
+
+	return tab;
+}
+
+void printWinners(Winner *tab, int nbGagnants){
+	for(int i = 0; i<nbGagnants; i++){
+		printf("%s",tab[i].annee);
+		printf(tab[i].nom);
+		printf(tab[i].sujet);
+	}
+}
 
 int main(void)
 {
 
 	int nbGagnants = scanLineAsInt();
 	printf("nbGagnants = %i\n",nbGagnants);
-
+	Winner *read = readWinners(nbGagnants);
+	printWinners(read, nbGagnants);
 	return EXIT_SUCCESS;
 }
