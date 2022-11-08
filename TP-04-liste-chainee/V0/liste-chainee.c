@@ -166,7 +166,6 @@ Liste retirePremier_r(Element v, Liste l) {
 		free(suivant);
 		return l;
 	}
-	el
 	else{
 		l ->suiv = retirePremier_r(v, l -> suiv);
 		return l;
@@ -176,6 +175,7 @@ Liste retirePremier_r(Element v, Liste l) {
 
 void afficheEnvers_r(Liste l) {
 	if(!estVide(l)){
-	afficheEnvers_r(l -> suiv) -> suiv = l;
+	afficheEnvers_r(l->suiv);
+	afficheElement(l->val);
 	}
 }
