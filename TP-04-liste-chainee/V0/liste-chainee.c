@@ -120,7 +120,7 @@ Liste cherche_i(Element v,Liste l) {
 
 // version récursive
 Liste cherche_r(Element v,Liste l) {
-	if(equalsElement(l -> val , v) || l == NULL){
+	if(l == NULL || equalsElement(l -> val , v) ){
 	return l;
 	}
 	else{
@@ -137,7 +137,7 @@ Liste retirePremier_i(Element v, Liste l) {
 		return NULL;
 	}
 	Liste l2 = l -> suiv;
-	while(!equalsElement(l2 -> val , v) && l2 -> suiv != NULL){
+	while(!equalsElement(l2 -> val , v) && l2 != NULL){
 		
 	}
 	precedent -> suiv = l2 -> suiv;
@@ -148,13 +148,34 @@ Liste retirePremier_i(Element v, Liste l) {
 
 // version recursive
 Liste retirePremier_r(Element v, Liste l) {
-	return TODO;
+	if (estVide( l -> suiv )){
+		if(equalsElement(l-> val , v)){
+			free(l);
+			return NULL;
+		}
+		else
+		{
+			return l;
+		}
+	}
+
+	if(equalsElement((l -> suiv)-> val , v) && (l -> suiv)!= NULL)
+	{
+		Liste suivant = l -> suiv;
+		l -> suiv = (l -> suiv) -> suiv;
+		free(suivant);
+		return l;
+	}
+	el
+	else{
+		l ->suiv = retirePremier_r(v, l -> suiv);
+		return l;
+	}
 }
 
 
 void afficheEnvers_r(Liste l) {
-	TODO;
+	if(!estVide(l)){
+	afficheEnvers_r(l -> suiv) -> suiv = l;
+	}
 }
-
-
-
