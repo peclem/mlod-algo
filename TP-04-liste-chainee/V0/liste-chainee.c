@@ -133,7 +133,11 @@ Liste cherche_r(Element v,Liste l) {
 // version itérative
 Liste retirePremier_i(Element v, Liste l) {
 	Liste precedent = l;
-	if(estVide(l) || (!equalsElement(l -> val, v) && estVide(l -> suiv))){
+	if(estVide(l)){
+		return NULL;
+	}
+	if( (!equalsElement(l -> val, v) && estVide(l -> suiv))){
+		free(l);
 		return NULL;
 	}
 	Liste l2 = l -> suiv;
