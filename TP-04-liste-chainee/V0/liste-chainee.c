@@ -12,7 +12,7 @@ bool estVide(Liste l) {
 // créer une liste d'un seul élément contenant la valeur v
 Liste creer(Element v){
 	Liste list = malloc(sizeof(Cellule));
-	if(list != NULL){
+	if(estVide(list)){
 		list -> val = v;
 		list -> suiv = NULL;
 	}
@@ -58,7 +58,7 @@ void detruireElement(Element e) {}
 // version itérative
 void detruire_i(Liste l) {
 	Liste list = l;
-	while(list != NULL){
+	while(!estVide(list)){
 		Liste suivant;
 		detruireElement(list->val);
 		suivant = list -> suiv;
@@ -112,7 +112,7 @@ bool equalsElement(Element e1, Element e2){
 // version itérative
 Liste cherche_i(Element v,Liste l) {
 	Liste liste = l;
-	while(!equalsElement(liste -> val , v) && liste!= NULL){
+	while(!equalsElement(liste -> val , v) && !estVide(liste)){
 		liste = liste -> suiv;
 	}
 	return liste;
@@ -120,7 +120,7 @@ Liste cherche_i(Element v,Liste l) {
 
 // version récursive
 Liste cherche_r(Element v,Liste l) {
-	if(l == NULL || equalsElement(l -> val , v) ){
+	if(estVide(l)|| equalsElement(l -> val , v) ){
 	return l;
 	}
 	else{
@@ -133,11 +133,11 @@ Liste cherche_r(Element v,Liste l) {
 // version itérative
 Liste retirePremier_i(Element v, Liste l) {
 	Liste precedent = l;
-	if(estVide(l) || (!equalsElement(l -> val, v) && l -> suiv == NULL)){
+	if(estVide(l) || (!equalsElement(l -> val, v) && estVide(l -> suiv))){
 		return NULL;
 	}
 	Liste l2 = l -> suiv;
-	while(!equalsElement(l2 -> val , v) && l2 != NULL){
+	while(!equalsElement(l2 -> val , v) && !estVde(l2)){
 		
 	}
 	precedent -> suiv = l2 -> suiv;
