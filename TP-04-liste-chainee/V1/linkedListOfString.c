@@ -27,6 +27,7 @@ int main(void){
     liste = ajoutTete(e,liste);
 
     afficheListe_i(liste);
+    detruire_r(liste);
 
     return EXIT_SUCCESS;
 }
